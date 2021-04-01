@@ -1,5 +1,5 @@
-// Package test is a sandbox for testing algorithms
-package test
+// Package algotest is a sandbox for testing algorithms
+package algotest
 
 import (
 	"fmt"

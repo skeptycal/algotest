@@ -1,4 +1,4 @@
-package test
+package algotest
 
 func BubbleSort(data []int) {
 	for i := 0; i < len(data); i++ {
