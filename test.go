@@ -3,11 +3,39 @@ package algotest
 
 import (
 	"fmt"
+	"math"
 	"math/big"
 	"strconv"
 	"strings"
 	"unicode"
 )
+
+var mathPow = math.Pow
+
+func pow(x, y int) int {
+	if x == 0 {
+		return 0
+	}
+	if y == 0 || x == 1 {
+		return 1
+	}
+	if y == 1 {
+		return x
+	}
+	retval := x
+	for i := 1; i < y; i++ {
+		retval *= x
+	}
+	return retval
+}
+
+func TenToThe(y int) int {
+	return pow(10, y)
+}
+
+func TwoToThe(y int) int {
+	return pow(2, y)
+}
 
 func PowersofTwo(num int) string {
 	for {
@@ -75,16 +103,11 @@ func QuestionsMarks(str string) string {
 }
 
 func BracketCombinations(num int) int {
-	var b, c big.Int
-	var r int64
 
-	n := int64(num)
-
-	retval := c.Div(b.Binomial(n*2, n), c.SetInt64(n+1))
-
-	retval.SetInt64(r)
-
-	return int(r)
+	// if num < 2 {
+	// 	return 1
+	// }
+	return Cat(num)
 }
 
 func FirstReverse(str string) string {
@@ -116,8 +139,40 @@ func readline() int {
 	return 510
 }
 
+func catNoPreCalc(num int) int {
+	var b, c big.Int
+
+	n := int64(num)
+	s := fmt.Sprint(c.Div(b.Binomial(n*2, n), c.SetInt64(n+1)))
+	j, _ := strconv.Atoi(s)
+	return j
+}
+
 // Cat calculates the num'th Catalan number
 func Cat(num int) int {
+	if num < 15 {
+		precalc := map[int]int{
+			0:  1,
+			1:  1,
+			2:  2,
+			3:  5,
+			4:  14,
+			5:  42,
+			6:  132,
+			7:  429,
+			8:  1430,
+			9:  4862,
+			10: 16796,
+			11: 58786,
+			12: 208012,
+			13: 742900,
+			14: 2674440,
+		}
+		return precalc[num]
+	}
+
+	// return catNoPreCalc(num)
+
 	var b, c big.Int
 
 	n := int64(num)
