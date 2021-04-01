@@ -10,9 +10,6 @@ import (
 )
 
 func PowersofTwo(num int) string {
-
-	// code goes here
-
 	for {
 		if num%2 != 0 {
 			return "false"
@@ -28,9 +25,6 @@ func PowersofTwo(num int) string {
 }
 
 func QuestionsMarks(str string) string {
-
-	// code goes here
-
 	seenAny := false
 	s := []byte{}
 
@@ -78,13 +72,9 @@ func QuestionsMarks(str string) string {
 	}
 
 	return "true"
-
 }
 
 func BracketCombinations(num int) int {
-
-	// code goes here
-
 	var b, c big.Int
 	var r int64
 
@@ -98,9 +88,6 @@ func BracketCombinations(num int) int {
 }
 
 func FirstReverse(str string) string {
-
-	// code goes here
-
 	l := len(str) - 1
 	sb := strings.Builder{}
 
@@ -111,7 +98,6 @@ func FirstReverse(str string) string {
 	fmt.Println(sb.String())
 
 	return sb.String()
-
 }
 
 func isAlpha(str string) bool {
@@ -126,10 +112,12 @@ func isAlpha(str string) bool {
 }
 
 func readline() int {
+	// test function for CoderByte
 	return 510
 }
 
-func cat(num int) int {
+// Cat calculates the num'th Catalan number
+func Cat(num int) int {
 	var b, c big.Int
 
 	n := int64(num)
